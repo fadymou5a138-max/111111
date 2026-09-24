@@ -23,9 +23,34 @@
   .card,.stat-card{box-shadow:none;border:1px solid #ddd}
 
 }
-@media(max-width:575px){
-  .circle-card{padding:16px}
-  .attendance-circle{width:155px;height:155px}
-  .attendance-circle::before{width:113px;height:113px}
-  .circle-text{font-size:24px}
+/* الكمبيوتر */
+body {
+    font-size: 16px;
+}
+
+/* الموبايل */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .container {
+        width: 95%;
+        margin: auto;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* الموبايل الصغير */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    button {
+        width: 100%;
+    }
 }

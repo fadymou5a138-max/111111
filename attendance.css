@@ -12,7 +12,34 @@
 .status-btn.active.late{background:var(--warning);color:#fff;border-color:var(--warning)}
 @media(max-width:850px){.attendance-summary{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.attendance-summary{grid-template-columns:1fr}}
-@media(max-width:700px){
-  .status-buttons{gap:5px}
-  .status-btn{flex:1 1 auto;min-height:38px}
+/* الكمبيوتر */
+body {
+    font-size: 16px;
+}
+
+/* الموبايل */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .container {
+        width: 95%;
+        margin: auto;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* الموبايل الصغير */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    button {
+        width: 100%;
+    }
 }

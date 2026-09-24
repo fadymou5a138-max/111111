@@ -1,11 +1,33 @@
 "use strict";
 document.addEventListener("DOMContentLoaded",()=>{
   const body=document.body,themeBtn=document.getElementById("themeToggle"),sidebar=document.getElementById("sidebar"),mobileBtn=document.getElementById("mobileMenuBtn");
+  const mobileOverlay=document.createElement("div");
+  mobileOverlay.className="mobile-overlay";
+  mobileOverlay.setAttribute("aria-hidden","true");
+  document.body.appendChild(mobileOverlay);
+
+  const setMenuState=(open)=>{
+    if(!sidebar||!mobileBtn)return;
+    const isOpen=Boolean(open);
+    sidebar.classList.toggle("open",isOpen);
+    mobileOverlay.classList.toggle("show",isOpen);
+    body.classList.toggle("menu-open",isOpen);
+    mobileBtn.setAttribute("aria-expanded",String(isOpen));
+    mobileOverlay.setAttribute("aria-hidden",String(!isOpen));
+    const icon=mobileBtn.querySelector("i");
+    if(icon) icon.className=isOpen?"fa-solid fa-xmark":"fa-solid fa-bars";
+  };
+
   if(localStorage.getItem("fmr_theme")==="dark")body.classList.add("dark");
   updateThemeLabel();
   themeBtn?.addEventListener("click",()=>{body.classList.toggle("dark");localStorage.setItem("fmr_theme",body.classList.contains("dark")?"dark":"light");updateThemeLabel()});
-  mobileBtn?.addEventListener("click",()=>sidebar?.classList.toggle("open"));
-  document.addEventListener("click",e=>{if(window.innerWidth<=800&&sidebar?.classList.contains("open")&&!sidebar.contains(e.target)&&e.target!==mobileBtn&&!mobileBtn?.contains(e.target))sidebar.classList.remove("open")});
+  mobileBtn?.setAttribute("aria-expanded","false");
+  mobileBtn?.setAttribute("aria-label","فتح القائمة");
+  mobileBtn?.addEventListener("click",()=>setMenuState(!sidebar?.classList.contains("open")));
+  mobileOverlay.addEventListener("click",()=>setMenuState(false));
+  sidebar?.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>setMenuState(false)));
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")setMenuState(false)});
+  window.addEventListener("resize",()=>{if(window.innerWidth>800)setMenuState(false)});
   const page=body.dataset.page;document.querySelector(`[data-page="${page}"]`)?.classList.add("active");
   const settings=getSettings();document.querySelectorAll("#adminName").forEach(el=>el.textContent=settings.adminName||"Admin");
   if(page==="dashboard")initDashboard();
