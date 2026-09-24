@@ -43,7 +43,7 @@
 
 <section class="page-content">
   <div class="page-header"><div><h2>كشف الحضور</h2><p>اختر الاجتماع والتاريخ ثم سجل الحالة</p></div><button class="btn btn-primary" id="saveAttendanceBtn"><i class="fa-solid fa-floppy-disk"></i> حفظ الحضور</button></div>
-  <div class="toolbar"><select id="meetingSelect"><option value="">اختر الاجتماع</option></select><input id="attendanceDate" type="date"><div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input id="attendanceSearch" placeholder="ابحث عن خادم..."></div><button class="btn btn-secondary" id="markAllPresentBtn">الكل حاضر</button></div>
+  <div class="toolbar"><select id="meetingSelect"><option value="">اختر الاجتماع</option></select><input id="attendanceDate" type="date"><div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input id="attendanceSearch" placeholder="ابحث عن خادم..."></div><button class="btn btn-secondary" id="markAllPresentBtn">الكل حاضر</button><button class="btn btn-secondary" id="markAllAbsentBtn">الكل غياب</button></div>
   <div class="attendance-summary">
     <div class="attendance-card"><span>الإجمالي</span><strong id="attendanceTotal">0</strong></div>
     <div class="attendance-card"><span>حضور</span><strong id="attendancePresent">0</strong></div>
@@ -51,7 +51,7 @@
     <div class="attendance-card"><span>تأخير</span><strong id="attendanceLate">0</strong></div>
   </div>
   <div class="card"><div class="card-header"><div><h3>الخدام</h3><p>حدد حالة كل خادم</p></div></div>
-  <div class="table-wrapper"><table><thead><tr><th>الخادم</th><th>الحالة</th><th>الدور</th>المجموعة<th></th></tr></thead><tbody id="attendanceTableBody"></tbody></table></div></div>
+  <div class="table-wrapper"><table><thead><tr><th>الخادم</th><th>حاضر</th><th>غياب</th><th>تأخير</th></tr></thead><tbody id="attendanceTableBody"></tbody></table></div></div>
 </section>
 <footer class="footer"><p>© 2026 FMR Attendance System</p><span>نظام إدارة حضور الخدام</span></footer>
 </main></div>
