@@ -13,14 +13,14 @@
 
 <link rel="manifest" href="manifest.json">
 
-<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="icon" type="image/png" href="./192.png">
 
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="FMR Attendance">
 
-<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="./192.png">
 <title>كنيسة مارجرجس الروماني – نزلة عبيد
 فترة الشهيد أبانوب | خدمة أولى وثانية ابتدائي</title></head>
 <body data-page="dashboard"><div class="app">
@@ -88,4 +88,19 @@
 </section>
 <footer class="footer"><p>© 2026 By : Fady moussa Mozley FMR.1 </p><span>نظام إدارة حضور الخدام</span></footer>
 </main></div>
-<script src="storage.js"></script><script src="app.js"></script></body></html>
+<script src="storage.js"></script><script src="app.js"></script>
+<script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+        navigator.serviceWorker.register("./service-worker.js", { scope: "./" })
+            .then(function (registration) {
+                console.log("PWA Service Worker registered:", registration.scope);
+            })
+            .catch(function (error) {
+                console.error("PWA Service Worker registration failed:", error);
+            });
+    });
+}
+</script>
+
+</body></html>
